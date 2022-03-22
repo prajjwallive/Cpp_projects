@@ -18,6 +18,7 @@ class ITEM
     int itemcode[m];
     float itemprice[m];
     int count;
+    float total;
 
 public:
     void counter(void) { count = 0; }
@@ -27,11 +28,14 @@ public:
     void remove(void);
     void displayItems(void);
     void holder(void);
+    ITEM(){
+        total;
+    }
 };
 void ITEM::loading(void) // Adding the loading screen in CPP
 {
     int load;
-    for (load = 90; load != 100; load += 10)
+    for (load = 40; load != 100; load += 20)
     {
         system("cls");
         cout << "Loading..." << load << loader << endl;
@@ -51,12 +55,12 @@ void ITEM ::getitem(void) // Reading an item
 void ITEM::displaySum(void) // Displaying sum
 {
     system("cls");
-    float sum = 0;
+     total = 0;
     for (int i = 0; i < count; i++)
     {
-        sum += itemprice[i];
+        total += itemprice[i];
     }
-    cout << "Total Price:" << currency << sum << endl;
+    cout << "Total Price:" << currency << total << endl;
     holder();
 }
 void ITEM ::remove(void) // removing items
@@ -76,7 +80,6 @@ void ITEM ::remove(void) // removing items
 void ITEM ::displayItems(void) // displaying item
 {
     system("cls");
-    int a;
     cout << "\n"
          << setw(10) << "Item-Code"
          << "     " << setw(10) << "Item-Price";
@@ -86,6 +89,7 @@ void ITEM ::displayItems(void) // displaying item
              << setw(10) << itemcode[i] << " " << setw(10) << itemprice[i];
     }
     cout << "\n****************************\n";
+    cout <<"Total Price:"<<currency<<total<<endl;
     holder();
 }
 void ITEM::holder()
